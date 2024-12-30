@@ -38,3 +38,5 @@ venv
 node_modules
 .sass-cache
 
+# Minio data volumes
+minio-volumes
