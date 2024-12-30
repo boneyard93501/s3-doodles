@@ -1,0 +1,58 @@
+version: '3.8'
+
+services:
+  minio1:
+    image: quay.io/minio/minio:latest
+    container_name: minio1
+    platform: linux/arm64
+    volumes:
+      - ${MINIO_VOLUME_DIR}/minio1:/data
+    environment:
+      MINIO_ROOT_USER: ${MINIO_USER}
+      MINIO_ROOT_PASSWORD: ${MINIO_PASSWORD}
+    ports:
+      - "9001:9000"
+      - "9004:9001"
+    command: server --console-address ":9001" http://minio{1...4}/data
+
+  minio2:
+    image: quay.io/minio/minio:latest
+    container_name: minio2
+    platform: linux/arm64
+    volumes:
+      - ${MINIO_VOLUME_DIR}/minio2:/data
+    environment:
+      MINIO_ROOT_USER: ${MINIO_USER}
+      MINIO_ROOT_PASSWORD: ${MINIO_PASSWORD}
+    ports:
+      - "9002:9000"
+      - "9005:9001"
+    command: server --console-address ":9001" http://minio{1...4}/data
+
+  minio3:
+    image: quay.io/minio/minio:latest
+    container_name: minio3
+    platform: linux/arm64
+    volumes:
+      - ${MINIO_VOLUME_DIR}/minio3:/data
+    environment:
+      MINIO_ROOT_USER: ${MINIO_USER}
+      MINIO_ROOT_PASSWORD: ${MINIO_PASSWORD}
+    ports:
+      - "9003:9000"
+      - "9006:9001"
+    command: server --console-address ":9001" http://minio{1...4}/data
+
+  minio4:
+    image: quay.io/minio/minio:latest
+    container_name: minio4
+    platform: linux/arm64
+    volumes:
+      - ${MINIO_VOLUME_DIR}/minio4:/data
+    environment:
+      MINIO_ROOT_USER: ${MINIO_USER}
+      MINIO_ROOT_PASSWORD: ${MINIO_PASSWORD}
+    ports:
+      - "9007:9000"
+      - "9008:9001"
+    command: server --console-address ":9001" http://minio{1...4}/data
